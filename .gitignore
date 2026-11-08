@@ -1,0 +1,12 @@
+# Xcode & Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+*.xcodeproj
+*.xcworkspace
+
+# macOS System Files
+.DS_Store
+*.swp
+*~
+Mementi.app/
