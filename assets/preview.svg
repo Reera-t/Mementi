@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 480" width="100%" height="100%">
+  <defs>
+    <filter id="shadow" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#EAB308" flood-opacity="0.25"/>
+    </filter>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="50%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#090D16"/>
+    </linearGradient>
+    <linearGradient id="window-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E222D" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#151821" stop-opacity="0.98"/>
+    </linearGradient>
+    <linearGradient id="yellow-card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FEF9A7"/>
+      <stop offset="100%" stop-color="#FEF08A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background canvas -->
+  <rect width="760" height="480" rx="16" fill="url(#bg-grad)"/>
+
+  <!-- macOS Top Menu Bar Mockup -->
+  <rect x="0" y="0" width="760" height="34" fill="#0A0E17" fill-opacity="0.75"/>
+  <text x="24" y="22" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="13" font-weight="600" fill="#E2E8F0"></text>
+  <text x="46" y="22" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="12" font-weight="600" fill="#F8FAFC">Finder</text>
+  <text x="96" y="22" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="12" fill="#94A3B8">File</text>
+  <text x="130" y="22" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="12" fill="#94A3B8">Edit</text>
+  <text x="165" y="22" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="12" fill="#94A3B8">View</text>
+
+  <!-- Right menu bar tray -->
+  <text x="615" y="22" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" fill="#94A3B8">100% 􀛨</text>
+  <text x="670" y="22" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" fill="#94A3B8">Sun 4:28 PM</text>
+
+  <!-- Active Mementi Toolbar Icon -->
+  <rect x="578" y="5" width="28" height="24" rx="5" fill="#3B82F6" fill-opacity="0.25"/>
+  <text x="585" y="22" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#FACC15">📎</text>
+
+  <!-- Pointer arrow from icon down to popover -->
+  <polygon points="592,30 584,42 600,42" fill="#1E222D"/>
+
+  <!-- Floating Popover Window -->
+  <g transform="translate(200, 42)" filter="url(#shadow)">
+    <!-- Main Window Frame -->
+    <rect width="360" height="415" rx="14" fill="url(#window-bg)" stroke="#334155" stroke-width="1"/>
+
+    <!-- Header -->
+    <text x="16" y="28" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="13" font-weight="700" fill="#FACC15">📎</text>
+    <text x="34" y="28" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="13" font-weight="700" fill="#F8FAFC">Mementi</text>
+    <text x="96" y="28" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="10" fill="#64748B">v1.0</text>
+    <circle cx="338" cy="24" r="2" fill="#94A3B8"/>
+    <circle cx="344" cy="24" r="2" fill="#94A3B8"/>
+    <circle cx="350" cy="24" r="2" fill="#94A3B8"/>
+
+    <!-- Search Field -->
+    <rect x="14" y="44" width="332" height="28" rx="6" fill="#0F172A" stroke="#334155" stroke-width="0.8"/>
+    <text x="26" y="62" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#64748B">🔍</text>
+    <text x="46" y="62" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="12" fill="#94A3B8">Search clipboard history...</text>
+
+    <!-- Two-Column Tabs (All vs ❤️) -->
+    <g transform="translate(14, 80)">
+      <rect width="162" height="26" rx="6" fill="#2563EB" fill-opacity="0.2" stroke="#3B82F6" stroke-width="0.8"/>
+      <text x="65" y="17" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11" font-weight="600" fill="#60A5FA">All (8)</text>
+
+      <rect x="170" width="162" height="26" rx="6" fill="#1E293B" fill-opacity="0.5" stroke="#334155" stroke-width="0.8"/>
+      <text x="240" y="18" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="12" fill="#EF4444">❤️ (2)</text>
+    </g>
+
+    <!-- CARD 1: Yellow Highlighted Long Memory Card -->
+    <g transform="translate(14, 116)" filter="url(#card-shadow)">
+      <rect width="332" height="114" rx="8" fill="url(#yellow-card)" stroke="#CA8A04" stroke-width="1.8"/>
+
+      <!-- Card 1 Header -->
+      <rect x="10" y="8" width="94" height="18" rx="4" fill="#EAB308" fill-opacity="0.3"/>
+      <text x="14" y="21" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="9" font-weight="800" fill="#854D0E">❤️ LONG MEMORY</text>
+      <text x="110" y="21" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="9.5" fill="#713F12">• 12m ago</text>
+
+      <!-- Highlight Button Active -->
+      <rect x="236" y="8" width="86" height="20" rx="5" fill="#CA8A04" stroke="#A16207" stroke-width="1"/>
+      <text x="242" y="22" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="10" font-weight="700" fill="#FFFFFF">★ Highlighted</text>
+
+      <!-- Card 1 Content (Yellow background contrast) -->
+      <text x="12" y="48" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" font-weight="600" fill="#1C1917">https://api.github.com/v1/deploy/prod-01</text>
+      <text x="12" y="66" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="11" fill="#44403C">token: ghp_9xK82LqP0921mVz...</text>
+
+      <!-- Card 1 Footer -->
+      <text x="12" y="102" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="9" fill="#854D0E">68 chars • 2 lines</text>
+      <text x="264" y="102" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="9.5" font-weight="700" fill="#15803D">✓ Saved Forever</text>
+    </g>
+
+    <!-- CARD 2: Standard Temporary Card (Clean View) -->
+    <g transform="translate(14, 240)">
+      <rect width="332" height="100" rx="8" fill="#1E293B" fill-opacity="0.75" stroke="#334155" stroke-width="0.8"/>
+
+      <!-- Card 2 Header -->
+      <text x="12" y="22" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="10" fill="#94A3B8">2h ago</text>
+
+      <!-- Highlight Button Inactive (Click to turn yellow) -->
+      <rect x="248" y="8" width="74" height="20" rx="5" fill="#334155" fill-opacity="0.6" stroke="#475569" stroke-width="0.8"/>
+      <text x="256" y="22" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="10" fill="#FDE047">✎ Highlight</text>
+
+      <!-- Card 2 Content -->
+      <text x="12" y="48" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11.5" fill="#E2E8F0">git commit -m "feat: add mouse highlighter"</text>
+      <text x="12" y="66" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="11.5" fill="#94A3B8">git push -u origin main</text>
+
+      <!-- Card 2 Footer -->
+      <text x="12" y="88" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="9" fill="#64748B">67 chars • 2 lines</text>
+      <text x="246" y="88" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="9" fill="#64748B">Expires in 2d</text>
+    </g>
+
+    <!-- Window Footer Tip -->
+    <rect x="0" y="380" width="360" height="35" rx="0" fill="#0B0F19" fill-opacity="0.8"/>
+    <text x="14" y="402" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="10" fill="#FACC15">💡</text>
+    <text x="32" y="402" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="9.5" fill="#94A3B8">Click Highlight with mouse to turn yellow &amp; keep forever in ❤️</text>
+  </g>
+</svg>
