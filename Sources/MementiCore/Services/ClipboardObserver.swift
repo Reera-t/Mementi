@@ -6,7 +6,8 @@ public final class ClipboardObserver: ObservableObject {
 
     private let pasteboard = NSPasteboard.general
     private var lastChangeCount: Int
-    private var timer: Timer?
+    private var timer: DispatchSourceTimer?
+    private let queue = DispatchQueue.main
     private var suppressNextChange = false
 
     private init() {
@@ -16,13 +17,19 @@ public final class ClipboardObserver: ObservableObject {
     public func start() {
         stop()
         lastChangeCount = pasteboard.changeCount
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+
+        // Use GCD DispatchSourceTimer to fire reliably regardless of RunLoop tracking modes or app state
+        let timer = DispatchSource.makeTimerSource(queue: queue)
+        timer.schedule(deadline: .now(), repeating: .milliseconds(350))
+        timer.setEventHandler { [weak self] in
             self?.checkForChanges()
         }
+        timer.resume()
+        self.timer = timer
     }
 
     public func stop() {
-        timer?.invalidate()
+        timer?.cancel()
         timer = nil
     }
 
@@ -49,7 +56,6 @@ public final class ClipboardObserver: ObservableObject {
                 let lower = t.rawValue.lowercased()
                 return lower.contains("concealed") ||
                        lower.contains("transient") ||
-                       lower.contains("password") ||
                        sensitiveTypes.contains(t.rawValue)
             }
             if isSensitive {
@@ -57,14 +63,23 @@ public final class ClipboardObserver: ObservableObject {
             }
         }
 
-        guard let text = pasteboard.string(forType: .string) else { return }
+        guard let text = extractText() else { return }
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
         // Guard against massive payloads (> 1MB / 1,000,000 chars) to prevent memory spikes
         guard !trimmed.isEmpty && trimmed.count <= 1_000_000 else { return }
 
-        DispatchQueue.main.async {
-            StorageManager.shared.addClip(content: text)
+        StorageManager.shared.addClip(content: text)
+    }
+
+    /// Extract text with fallback from plain text to rich/HTML object representations
+    private func extractText() -> String? {
+        if let str = pasteboard.string(forType: .string) {
+            return str
         }
+        if let objects = pasteboard.readObjects(forClasses: [NSString.self], options: nil) as? [String], let first = objects.first {
+            return first
+        }
+        return nil
     }
 
     /// Copy item back into system pasteboard without triggering duplicate observer cycle

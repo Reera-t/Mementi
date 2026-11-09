@@ -1,4 +1,5 @@
 import AppKit
+import ServiceManagement
 
 public final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem?
@@ -10,6 +11,13 @@ public final class AppDelegate: NSObject, NSApplicationDelegate {
     public func applicationDidFinishLaunching(_ notification: Notification) {
         // Guarantee this app runs strictly as an accessory (menu bar toolbar only, no dock icon)
         NSApp.setActivationPolicy(.accessory)
+
+        // Automatically register to launch at login (macOS 13+)
+        if #available(macOS 13.0, *) {
+            if SMAppService.mainApp.status != .enabled {
+                try? SMAppService.mainApp.register()
+            }
+        }
 
         setupStatusItem()
         setupPopover()

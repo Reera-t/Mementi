@@ -32,6 +32,11 @@ public final class ClipboardPopoverController: NSViewController, NSTableViewData
         reloadClips()
     }
 
+    override public func viewWillAppear() {
+        super.viewWillAppear()
+        reloadClips()
+    }
+
     private func setupUI() {
         // --- Header Section ---
         let headerBox = NSView()
@@ -182,10 +187,15 @@ public final class ClipboardPopoverController: NSViewController, NSTableViewData
     }
 
     public func reloadClips() {
+        let currentClips = StorageManager.shared.clips
+        self.allClips = currentClips
+
+        guard isViewLoaded else { return }
+
         let query = searchField.stringValue.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         let segment = segmentedControl.selectedSegment
 
-        var filtered = allClips
+        var filtered = currentClips
 
         // Filter by segment: 0 = All, 1 = ❤️ (Long Memory / Highlighted)
         if segment == 1 {
